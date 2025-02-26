@@ -1,0 +1,95 @@
+Regras Nomenclatura
+
+Documento de banco de dados 
+Padrão: snake_case
+Exemplo: banco_de_dados
+
+Nomes de tabela:
+Sempre no plural
+Exemplos: dados clientes
+
+Nome de coluna:
+Sempre no singular, evitar nomes genéricos como Ex: valor, prefira (preco_produto)
+para chave estrangeira: fkCliente
+
+Documentos de Koltin
+Padrão: PascalCase 
+Exemplo: PedidoService
+
+Nome de variável:
+Padrão: camelCase 
+Exemplo: contaPoupanca
+
+nome de Constante
+Padrão: UPPER_CAME_CASE
+Exemplo: VALOR_QUE_NAO_MUDA
+
+Função e métodos 
+Padrão: camelCase, verbal e descritivo
+
+Paramêtros e argumentos
+Padrão: camelCase
+
+Pacotes e nomes 
+use lowercase e sem underscores
+
+ENUM
+Padrão: use PascalCase
+Exemplo: StatusPedido
+
+Valores do ENUM
+Padrão: UPPER_SNAKE_CASE
+Exemplo: PENDENTE , ENVIADO
+
+Nomes de testes:
+Padrão: given_when_then, Pode usar should para indicar comportamento esperado
+usar a anotação @DisplayName("para colocar o que a função está fazendo")
+Exemplo: deveria_retorna_erro_
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Nomes de arquivo Docker
+Padrão: snake_case, O nome deve ser descritivo, indicando a aplicação e o serviço.
+Exemplo:  web_server_nginx 
+
+Nomes de imagens:
+Padrão: Nomeie imagens no formato usuário/nome-da-imagem:tag, Use letras minúsculas e kebab-case, Utilize tags para indicar versões (ex:v1.0.0).
+Exemplo: meu_usuario/minha-app:v1.0
+
+Volumes:
+Padrão: snake_case 
+Exemplo: app_data
+
+Redes:
+Padrão: Kebab-case
+Exemplo: app-network
+
+Docker-Compose
+Padrão: snake_case
+Exemplo: web_app
+
+DockerFile
+Padrão:Com o sufixo DockerFile e depois a descrição se tiver muitos
+Exemplo: Dockerfile.criação-da-imagem
+
+
+
+
+
+
+
+ 
