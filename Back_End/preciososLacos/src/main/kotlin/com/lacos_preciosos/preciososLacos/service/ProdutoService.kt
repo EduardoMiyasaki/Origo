@@ -8,11 +8,8 @@ import org.springframework.stereotype.Service
 @Service
 class ProdutoService(val produtoRepository: ProdutoRepository) {
 
-    fun getAllProdutos: List<Produto> {
-
+    fun getAllProdutos(): List<Produto> {
+        return produtoRepository.findAll();
     }
 
-    fun converterProduto(val listaProdutos: List<Produto>): List<CadastroProdutoDTO>{
-
-    }
 }

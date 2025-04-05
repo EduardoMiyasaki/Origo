@@ -1,18 +1,26 @@
 package com.lacos_preciosos.preciososLacos.model
 
 import com.lacos_preciosos.preciososLacos.dto.UsuarioDTO
+import jakarta.persistence.Entity
+import jakarta.persistence.GeneratedValue
+import jakarta.persistence.GenerationType
+import jakarta.persistence.Id
 import java.time.LocalDate
 
-class Usuario {
+@Entity
+class Usuario() {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int = 0;
     var nome: String = "";
     var email: String = "";
     var senha: String = "";
     var telefone: String = "";
-    var data_cadastro: LocalDate;
+    var data_cadastro: LocalDate? = null;
     var cpf: String = "";
 
-    constructor(usuarioDTO: UsuarioDTO) {
+    constructor(usuarioDTO: UsuarioDTO) : this() {
         this.nome = usuarioDTO.nome;
         this.senha = usuarioDTO.senha;
         this.telefone = usuarioDTO.telefone;

@@ -3,12 +3,12 @@ CREATE DATABASE preciosos_lacos;
 use preciosos_lacos;
 
 CREATE TABLE tipo_usuario(
-	idTipoUsuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_tipoUsuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     tipo_usuario VARCHAR(45)
 );
 
 CREATE TABLE usuario (
- idUsuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ id_usuario INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
  nome_completo VARCHAR(100) NOT NULL,
  email VARCHAR(100) NOT NULL UNIQUE,
  senha CHAR(8) NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE usuario (
  );
  
 CREATE TABLE endereco(
-	idEndereco INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_endereco INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     cep VARCHAR(14),
     logradouro VARCHAR(45),
     bairro VARCHAR(45),
@@ -29,7 +29,7 @@ CREATE TABLE endereco(
 );
 
 CREATE TABLE pedido(
-	idPedido INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_pedido INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     data_pedido DATE,
     status_pagamento VARCHAR(45),
     status_pedido VARCHAR(45),
@@ -39,7 +39,7 @@ CREATE TABLE pedido(
 
 
 CREATE TABLE modelo(
-	idModelo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_modelo INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nome_modelo VARCHAR(100),
     preco DOUBLE,
     descricao VARCHAR(256),
@@ -47,7 +47,7 @@ CREATE TABLE modelo(
 );
 
 CREATE TABLE produto(
-	idProduto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	id_produto INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     tamanho CHAR(3),
     cor VARCHAR(45),
     tipo_laco VARCHAR(45),
@@ -59,17 +59,18 @@ CREATE TABLE favorito(
 	fkUsuario INT NOT NULL,
     fkProduto INT NOT NULL,
     favorito VARCHAR(45),
-	CONSTRAINT usuarioFavorito FOREIGN KEY(fkUsuario) REFERENCES usuario(idUsuario),
-    CONSTRAINT produtoFavorito FOREIGN KEY(fkProduto) REFERENCES produto(idProduto)
+	CONSTRAINT usuarioFavorito FOREIGN KEY(fkUsuario) REFERENCES usuario(id_usuario),
+    CONSTRAINT produtoFavorito FOREIGN KEY(fkProduto) REFERENCES produto(id_produto)
 );
 
 CREATE TABLE itens_pedido(
 	fkPedido INT NOT NULL,
     fkProduto INT NOT NULL,
     quantidade INT,
-    CONSTRAINT pedidoItens FOREIGN KEY(fkPedido) REFERENCES pedido(idPedido),
-    CONSTRAINT produtoItens FOREIGN KEY(fkProduto) REFERENCES produto(idProduto)
+    CONSTRAINT pedidoItens FOREIGN KEY(fkPedido) REFERENCES pedido(id_pedido),
+    CONSTRAINT produtoItens FOREIGN KEY(fkProduto) REFERENCES produto(id_produto)
 );
+
 
 
     
