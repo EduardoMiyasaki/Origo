@@ -1,5 +1,6 @@
 package com.lacos_preciosos.preciososLacos.service
 
+import com.lacos_preciosos.preciososLacos.dto.AtualizacaoFotoDTO
 import com.lacos_preciosos.preciososLacos.dto.CadastroModeloDTO
 import com.lacos_preciosos.preciososLacos.dto.DadosDetalheModelo
 import com.lacos_preciosos.preciososLacos.model.Modelo
@@ -40,6 +41,19 @@ class ModeloService(private val modeloRepository: ModeloRepository) {
             return DadosDetalheModelo(modelo)
         } else {
             throw ValidacaoException("Modelo não encontrado")
+        }
+    }
+
+    fun updateFoto(id: Int, fotoDTO: AtualizacaoFotoDTO): DadosDetalheModelo {
+        var existe = modeloRepository.findById(id)
+
+        if (existe.isEmpty) {
+            throw ValidacaoException("Modelo não encontrado")
+        } else {
+            val modelo = existe.get()
+            modeloRepository.updateFoto(id, fotoDTO.foto)
+            modelo.foto = fotoDTO.foto
+            return DadosDetalheModelo(modelo)
         }
     }
 
