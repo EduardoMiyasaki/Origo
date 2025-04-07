@@ -23,7 +23,18 @@ data class Usuario(
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     var data_cadastro: LocalDate = LocalDate.now()
 ) {
-    constructor(usuarioDTO: UsuarioDTO): this(
+     constructor() : this(
+         idUsuario = null,
+         nomeCompleto = "",
+         email = "",
+         senha = "",
+         cpf = "",
+         telefone = "",
+         data_cadastro = LocalDate.now()
+     )
+
+
+     constructor(usuarioDTO: UsuarioDTO): this(
         nomeCompleto = usuarioDTO.nomeCompleto,
         senha = usuarioDTO.senha,
         telefone = usuarioDTO.telefone,

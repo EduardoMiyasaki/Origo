@@ -27,56 +27,16 @@ class UsuarioController(private val repositorio: UsuarioRepository) {
         return ResponseEntity.status(201).body(usuario)
     }
 
-  /*  @GetMapping
-    fun listarUsuario(): ResponseEntity<List<Usuario>> {
-        if (usuariosList.isEmpty()) {
-            return ResponseEntity.status(204).build()
-        }
-        return ResponseEntity.status(200).body(usuariosList)
-    }
 
-    @GetMapping("/{id}")
-    fun listarPeloId(@PathVariable id: Int): ResponseEntity<Usuario> {
-        if (id in 0..<usuariosList.size) {
-            return ResponseEntity.status(200).body(usuariosList[id]);
-        }
-        return ResponseEntity.status(404).build();
-    }
-
-    @GetMapping("/nomes")
-    fun listarPeloNome(@RequestParam nome: String): ResponseEntity<Usuario> {
-
-        val usuarioEncontrado = usuariosList
-            .stream()
-            .filter { it.nome.lowercase().trim().contains(nome.lowercase().trim()) }
-            .findFirst();
-
-        return if (usuarioEncontrado.isPresent) {
-            ResponseEntity.status(200).body(usuarioEncontrado.get())
-        } else {
+    //Listando todos os usuarios do banco de dados
+    @GetMapping
+    fun listarUsuarios():ResponseEntity<List<Usuario>>{
+        val usuarios = repositorio.findAll()
+        return if(usuarios.isEmpty()){
             ResponseEntity.status(204).build()
+        }else{
+            ResponseEntity.status(200).body(usuarios)
         }
     }
-
-    @PutMapping("/{id}")
-    fun atualizarUsuario(@PathVariable id: Int, @RequestBody usuarioDTO: UsuarioDTO): ResponseEntity<Usuario> {
-
-        if (id in 0..<usuariosList.size) {
-            val usuarioAtualizado = usuarioService.criarUsuario(usuarioDTO)
-            usuariosList[id] = usuarioAtualizado
-            return ResponseEntity.status(200).body(usuarioAtualizado);
-        }
-        return ResponseEntity.status(204).build()
-    }
-
-    @DeleteMapping("/{id}")
-    fun deletarUsuario(@PathVariable id: Int): ResponseEntity<String> {
-
-        if (id in 0..< usuariosList.size) {
-            usuariosList.removeAt(id)
-            return ResponseEntity.status(200).build();
-        }
-        return ResponseEntity.status(404).build();
-    }
-*/
+  
 }
